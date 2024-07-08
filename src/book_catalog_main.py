@@ -1,5 +1,5 @@
-from book_functions import add_book
-import json
+from book_functions import add_book, search_books, load_catalog_from_json
+
 
 catalog = []
 
@@ -7,7 +7,7 @@ def main():
     print("Welcome to the Book Catalog App")
     while True:
         print("1. Add a Book")
-        print("2. Search and Sort Books")
+        print("2. Search Books")
         print("3. View Catalog")
         print("4. Exit")
         choice = input("Enter your choice: ")
@@ -25,4 +25,5 @@ def main():
             print("Invalid choice. Please enter a valid option.")
 
 if __name__ == "__main__":
+    load_catalog_from_json() #  ensures that when the program starts, any previously saved catalog data is read and made available for use.
     main()
