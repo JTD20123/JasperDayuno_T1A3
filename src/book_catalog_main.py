@@ -3,6 +3,7 @@ from book_functions import add_book, search_books, load_catalog_from_json,  view
 
 catalog = []
 
+
 def main():
     print("Welcome to the Book Catalog App")
     while True:
@@ -24,6 +25,8 @@ def main():
         else:
             print("Invalid choice. Please enter a valid option.")
 
+
 if __name__ == "__main__":
-    load_catalog_from_json() #  ensures that when the program starts, any previously saved catalog data is read and made available for use.
+    # ensures that when the program starts, any previously saved catalog data is read and made available for use.
+    load_catalog_from_json()
     main()
