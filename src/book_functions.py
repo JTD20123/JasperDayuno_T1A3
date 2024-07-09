@@ -111,4 +111,39 @@ def display_search_results(found_books):
     else:
         print("No books found.\n")
 
+def display_books():
+    load_catalog_from_json()
+    if catalog:
+        print("\nCatalog:")
+        for idx, book in enumerate(catalog, start=1):
+            read_status = "Read" if book.is_read else "Unread"
+            print(f"{idx}. Title: {book.title}, Author: {book.author}, Genre: {book.genre}, Publication Year: {book.publication_year}, Status: {read_status}")
+        print()
+    else:
+        print("Catalog is empty.\n")
 
+def view_catalog():
+    if catalog:
+        print("Books in Catalog:")
+        for index, book in enumerate(catalog):
+            print(f"{index + 1}. Title: {book.title}")
+            print(f"   Author: {book.author}")
+            print(f"   Genre: {book.genre}")
+            print("--------------------")
+        
+        choice = input("Enter the number of the book you want to remove, or '0' to cancel: ")
+        if choice.isdigit():
+            index_to_remove = int(choice) - 1
+            if 0 <= index_to_remove < len(catalog):
+                removed_book = catalog.pop(index_to_remove)
+                print(f"Removed book: {removed_book.title}")
+                save_books_to_json()  # Save catalog to JSON file after removal
+            elif index_to_remove == -1:
+                print("Canceled removal.")
+            else:
+                print("Invalid index. No book removed.")
+        else:
+            print("Invalid input. No book removed.")
+
+    else:
+        print("No books found in the catalog.")

@@ -1,4 +1,4 @@
-from book_functions import add_book, search_books, load_catalog_from_json
+from book_functions import add_book, search_books, load_catalog_from_json,  view_catalog
 
 
 catalog = []
@@ -17,7 +17,7 @@ def main():
         elif choice == '2':
             search_books()
         elif choice == '3':
-            display_books()
+            view_catalog()
         elif choice == '4':
             print("Exiting the application.")
             break
